@@ -1,13 +1,13 @@
-1. What is a queue?
-2. What is the principle of a queue?
-3. What are some applications of a queue?
-4. How is a queue represented?
-5. How will we know whether a queue is empty or not?
-6. How do you insert an element in a queue?
-7. How do you delete an element in a queue?
-8. How do you insert and delete an element in a queue?
-9. Explain the linked list representation of a queue?
-10. What is DEQUE?What is a priority queue?
-11. How do you represent priority queue in a list?
-12. What is a circular queue?
-13. How do you represent circular queue in a list?
+What is a queue?
+What is the principle of a queue?
+What are some applications of a queue?
+How is a queue represented?
+How will we know whether a queue is empty or not?
+How do you insert an element in a queue?
+How do you delete an element in a queue?
+Explain the linked list representation of a queue?
+What is DEQUE?
+What is a priority queue?
+How do you represent priority queue in a list?
+What is a circular queue?
+How do you represent circular queue in a list?
