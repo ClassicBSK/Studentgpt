@@ -1,0 +1,13 @@
+What is a queue?
+What is the principle of a queue?
+What are some applications of a queue?
+How is a queue represented?
+How will we know whether a queue is empty or not?
+How do you insert an element in a queue?
+How do you delete an element in a queue?
+Explain the linked list representation of a queue?
+What is DEQUE?
+What is a priority queue?
+How do you represent priority queue in a list?
+What is a circular queue?
+How do you represent circular queue in a list?
