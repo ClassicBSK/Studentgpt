@@ -1,0 +1,11 @@
+What is a queue in data structures?
+Explain the concept of FIFO (First-In-First-Out) in the context of queues.
+How are queues implemented? 
+What are the basic operations that can be performed on a queue?
+Discuss the applications of queues in computer science or real-life scenarios.
+Explain the concept of circular queues. How do they differ from regular queues?
+What is a priority queue? How does it differ from a regular queue?
+Discuss the complexity analysis (time and space) of queue operations such as enqueue and dequeue.
+What do you mean by  double-ended queue (deque) be implemented?
+Whether can you create a queue using  two stack alone?
+Can there be a queue which is a cricular queue and priority queue?
