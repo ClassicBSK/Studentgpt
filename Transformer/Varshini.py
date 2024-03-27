@@ -9,7 +9,7 @@ class PositionalEncoding(nn.Module):
     def forward(self):
         even_i = torch.arrange(0,self.d_model,2).float()
         denominator = torch.pow(10000,even_i/self.d_model)
-        position = torch.arrange(self.max_sequence_length).reshape(self.max_sequence_length,1)
+        position = torch.arange(self.max_sequence_length).reshape(self.max_sequence_length,1)
         even_PE = torch.sin(position/denominator)
         odd_PE = torch.cos(position/denominator)
         stacked = torch.stack([even_PE,odd_PE],dim=2)
