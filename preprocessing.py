@@ -6,11 +6,11 @@ from nltk.stem.snowball import SnowballStemmer
 import matplotlib.pyplot as plt
 import pickle
 
-nltk.download('punkt')
-nltk.download('stopwords')
+# nltk.download('punkt')
+# nltk.download('stopwords')
 
 
-file=open("Text\data.txt",mode="r",encoding="utf-8")
+file=open("Text\queue.txt",mode="r",encoding="utf-8")
 
 #splitting based on tokens
 text1=file.read()

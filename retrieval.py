@@ -1,4 +1,5 @@
 from preprocess2 import get_embeddings,get_final_data
+from embed2 import get_embeddingsv2
 import numpy as np
 from numpy.linalg import norm
 import plotly.express as px
@@ -7,7 +8,7 @@ from gensim.models import Word2Vec
 import nltk
 from nltk.corpus import stopwords
 
-nltk.download('stopwords')
+# nltk.download('stopwords')
 
 stopwlist=stopwords.words('english')
 #query="ways to implement a stack"
@@ -36,14 +37,17 @@ def cosine_similarity(embed1,embed2):
     return ret
 
 def get_scores(query:str,k:int):
-    embeddings=get_embeddings(query=query)
+    embeddings=get_embeddingsv2(query=query)
     scoresdict={}
     for i in range(0,len(embeddings)-1):
         scoresdict[i]=cosine_similarity(embeddings[i],embeddings[len(embeddings)-1])
-        sorteddict=sorted(scoresdict.items(),key= lambda x:x[1])
-        sorteddict=sorteddict[::-1]
-        sorteddict=sorteddict[:k]
+        
+        # print(sorteddict)
+    sorteddict=sorted(scoresdict.items(),key= lambda x:x[1])
+    sorteddict=sorteddict[::-1]
+    sorteddict=sorteddict[:k]
     lie=[]
+    # print(sorteddict)
     for i in sorteddict:
         lie.append(i[0])
     return lie
@@ -68,6 +72,6 @@ def get_final_sentences(query:str,k:int):
     return corpus
 
 
-#show_3d()
+#show_3d("what is a stack?")
 #lite=get_set("what is a stack?",3)
 #print(lite)

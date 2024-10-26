@@ -1,0 +1,135 @@
+<START>
+What is a Queue?
+A queue is a data structure used for storing data (similar to Linked Lists and Stacks). In queue, the
+order in which data arrives is important. In general, a queue is a line of people or things waiting
+to be served in sequential order starting at the beginning of the line or sequence.
+Definition: A queue is an ordered list in which insertions are done at one end (rear) and
+deletions are done at other end (front). The first element to be inserted is the first one to be
+deleted. Hence, it is called First in First out (FIFO) or Last in Last out (LILO) list.
+Similar to Stacks, special names are given to the two changes that can be made to a queue. When
+an element is inserted in a queue, the concept is called EnQueue, and when an element is
+removed from the queue, the concept is called DeQueue.
+DeQueueing an empty queue is called underflow and EnQueuing an element in a full queue is
+called overflow. Generally, we treat them as exceptions. As an example, consider the snapshot of
+the queue.
+<START>
+How are Queues Used?
+
+The concept of a queue can be explained by observing a line at a reservation counter. When we
+enter the line we stand at the end of the line and the person who is at the front of the line is the one
+who will be served next. He will exit the queue and be served.
+
+As this happens, the next person will come at the head of the line, will exit the queue and will be
+served. As each person at the head of the line keeps exiting the queue, we move towards the head
+of the line. Finally we will reach the head of the line and we will exit the queue and be served.
+This behavior is very useful in cases where there is a need to maintain the order of arrival.
+
+<START>
+he following operations make a queue an ADT. Insertions and deletions in the queue must
+follow the FIFO scheme. For simplicity we assume the elements are integers.
+
+Main Queue Operations
+       •     EnQueue(int data): Inserts an element at the end of the queue
+       •     int DeQueue(): Removes and returns the element at the front of the queue
+
+Auxiliary Queue Operations
+       •     int Front(): Returns the element at the front without removing it
+       •     int QueueSize(): Returns the number of elements stored in the queue
+       •     int IsEmptyQueueQ: Indicates whether no elements are stored in the queue or not
+
+<START>
+Exceptions of queue
+Similar to other ADTs, executing DeQueue on an empty queue throws an “Empty Queue
+Exception” and executing EnQueue on a full queue throws “Full Queue Exception”.
+
+<START>
+Applications
+
+Following are some of the applications that use queues.
+
+Direct Applications
+      •     Operating systems schedule jobs (with equal priority) in the order of arrival (e.g., a
+             print queue).
+      •     Simulation of real-world queues such as lines at a ticket counter or any other first-
+             come first-served scenario requires a queue.
+      •     Multiprogramming.
+      •     Asynchronous data transfer (file IO, pipes, sockets).
+      •     Waiting times of customers at call center.
+      •     Determining number of cashiers to have at a supermarket.
+
+Indirect Applications
+      •     Auxiliary data structure for algorithms
+      •     Component of other data structures
+
+<START>
+Implementation
+
+There are many ways (similar to Stacks) of implementing queue operations and some of the
+commonly used methods are listed below.
+      •     Simple circular array based implementation
+      •     Dynamic circular array based implementation
+      •     Linked list implementation
+
+<START>
+Simple Circular Array Implementation of a queue
+
+
+
+
+This simple implementation of Queue ADT uses an array. In the array, we add elements circularly
+and use two variables to keep track of the start element and end element. Generally, front is used
+to indicate the start element and rear is used to indicate the end element in the queue. The array
+storing the queue elements may become full. An EnQueue operation will then throw a full queue
+exception. Similarly, if we try deleting an element from an empty queue it will throw empty
+queue exception.
+
+Note: Initially, both front and rear points to -1 which indicates that the queue is empty.
+
+<START>
+Performance and Limitations of a Simple Circular Array Implementation of a queue
+
+Performance: Let n be the number of elements in the queue:
+
+      Space Complexity (for n EnQueue operations)                               O(n)
+      Time Complexity of EnQueue()                                              O(1)
+      Time Complexity of DeQueue()                                              O(1)
+      Time Complexity of IsEmptyQueue()                                         O(1)
+      Time Complexity of IsFullQueue()                                          O(1)
+      Time Complexity of QueueSize()                                            O(1)
+
+      Time Complexity of DeleteQueue()                                          O(1)
+
+Limitations: The maximum size of the queue must be defined as prior and cannot be changed.
+Trying to EnQueue a new element into a full queue causes an implementation-specific exception.
+
+<START>
+Dynamic Circular Array Implementation
+Performance
+
+Let n be the number of elements in the queue.
+
+      Space Complexity (for n EnQueue operations)                    O(n)
+      Time Complexity of EnQueue()                                   O(1) (Average)
+      Time Complexity of DeQueue()                                   O(1)
+      Time Complexity of QueueSize()                                 O(1)
+      Time Complexity of IsEmptyQueue()                              O(1)
+      Time Complexity of IsFullQueue()                               O(1)
+      Time Complexity of QueueSize()                                 O(1)
+      Time Complexity of DeleteQueue()                               O(1)
+<START> 
+Linked List Implementation of a queue
+
+Another way of implementing queues is by using Linked lists. EnQueue operation is implemented
+by inserting an element at the end of the list. DeQueue operation is implemented by deleting an
+element from the beginning of the list.
+<START>Performance of a Linked List implementation of a queue
+
+Let n be the number of elements in the queue, then
+
+      Space Complexity (for n EnQueue operations)                    O(n)
+      Time Complexity of EnQueue()                                   O(1) (Average)
+      Time Complexity of DeQueue()                                   O(1)
+
+      Time Complexity of IsEmptyQueue()                              O(1)
+      Time Complexity of DeleteQueue()                               O(1)
+<START>

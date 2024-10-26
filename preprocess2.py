@@ -6,11 +6,11 @@ from nltk.stem.snowball import SnowballStemmer
 import matplotlib.pyplot as plt
 import pickle
 
-nltk.download('punkt')
-nltk.download('stopwords')
+# nltk.download('punkt')
+# nltk.download('stopwords')
 
 
-file=open("Text\data.txt",mode="r",encoding="utf-8")
+file=open("Text\queue.txt",mode="r",encoding="utf-8")
 
 #splitting based on tokens
 text1=file.read()
@@ -19,11 +19,22 @@ text=[i.lower() for i in text]
 text=text[1:]
 finaldata=[]
 
+file=open("Text\stack.txt",mode="r",encoding="utf-8")
+
+#splitting based on tokens
+text1=file.read()
+text2=text1.split('<START>')
+text2=[i.lower() for i in text2]
+text2=text2[1:]
+
 #removing new lines
 for i in text:
     i=i.replace('\n',' ')
     finaldata.append(i)
 
+for i in text2:
+    i=i.replace('\n',' ')
+    finaldata.append(i)
 #checked tokens
 
 stopwords = nltk.corpus.stopwords.words('english')
@@ -79,24 +90,25 @@ def get_embeddings(query:str):
 
 def get_final_data():
     return finaldata
-'''embeddings=get_embeddings("hello ")
+# embeddings=get_embeddings("what is a queue")
 
 
 
-# Dimensionality reduction to 3D using PCA
-pca = PCA(n_components=3)
-embeddings_3d = pca.fit_transform(embeddings)
-lise=[]
-for i in range(len(finaldata)):
-    print(i)
-    lise.append(i)
-    print('--------------------')
-    print(finaldata[i])
+# # Dimensionality reduction to 3D using PCA
+# pca = PCA(n_components=3)
+# embeddings_3d = pca.fit_transform(embeddings)
+# lise=[]
+# for i in range(len(finaldata)):
+#     print(i)
+#     lise.append(i)
+#     print('--------------------')
+#     print(finaldata[i])
 
-# Visualize the 3D embeddings
-fig = px.scatter_3d(x=embeddings_3d[:,0], y=embeddings_3d[:,1], z=embeddings_3d[:,2],
-                    text=lise, title="Text Similarity in 3D")
+# lise.append(len(finaldata))
+# # Visualize the 3D embeddings
+# fig = px.scatter_3d(x=embeddings_3d[:,0], y=embeddings_3d[:,1], z=embeddings_3d[:,2],
+#                     text=lise, title="Text Similarity in 3D")
 
-fig.show()
-'''
+# fig.show()
+
 

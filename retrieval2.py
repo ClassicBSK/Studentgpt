@@ -6,7 +6,7 @@ from nltk.stem.snowball import SnowballStemmer
 
 #from preprocessing import *
 
-query="what is  a stack?"
+query="what is a stack?"
 
 
 

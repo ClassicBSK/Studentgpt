@@ -6,7 +6,7 @@ import snowballstemmer
 
 
 
-query="how is a stack implemented using a simple array"
+query="what is a queue"
 
 def get_answer(query:str,k:int):
     stemmer = snowballstemmer.stemmer('english')
@@ -21,10 +21,10 @@ def get_answer(query:str,k:int):
 
     results,score=retriever.retrieve(tokenized_query,corpus=corpus,k=k)
 
-    print(results)
+    # print(results)
 
     
     return results
 
-get_answer(query=query,k=3)
+# get_answer(query=query,k=3)
 

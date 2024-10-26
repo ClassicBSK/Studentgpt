@@ -1,0 +1,96 @@
+.chat-interface {
+    display: flex;
+    height: 100vh;
+  }
+  
+  /* Main Chat Area */
+  .chat-area {
+    width: 80%; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures the input stays at the bottom */
+    background-color: #f4f4f9;
+  }
+  
+  .chat-content {
+    flex-grow: 1;
+  }
+  
+.qa-section {
+    display: flex;
+    align-items: center; /* This centers the button vertically with the input */
+    background-color: #f4f4f9;
+    padding: 10px 0;
+  }
+  
+  input {
+    padding: 10px;
+    width: 80%;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px 16px; /* Reduced padding to make it look more aligned */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  .response-section {
+    margin-top: 20px;
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    width: 20%;
+    background-color: #343541;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .new-chat-btn {
+    background-color: #19a2fb;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .new-chat-btn:hover {
+    background-color: #007bff;
+  }
+  
+  .chat-history {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  
+  .chat-item {
+    background-color: #4b4b56;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .chat-item:hover {
+    background-color: #565667;
+  }
+  
