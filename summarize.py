@@ -1,31 +1,30 @@
-# from transformers import BartForConditionalGeneration, BartTokenizer
-from retrieval3 import get_answer
-# # model_name = 'facebook/bart-large-cnn'
-# model = BartForConditionalGeneration.from_pretrained('Yale-LILY/brio-cnndm-uncased')
-# tokenizer = BartTokenizer.from_pretrained('Yale-LILY/brio-cnndm-uncased')
+from reranker import get_reranked_texts
+from transformers import AutoTokenizer,AutoModelForCausalLM,pipeline
+from textwrap import dedent
+from transformers import BartForConditionalGeneration, BartTokenizer
 
-# def summarize_article(article):
-#     # Load BART model and tokenizer
 
-#     # Tokenize and encode the article
-#     inputs = tokenizer.encode(article, return_tensors='pt',
-# max_length=1024, truncation=True)
+def get_final_answers(query):
+    answers=get_reranked_texts(query=query,k=3)
 
-#     # Generate summary
-#     summary_ids = model.generate(inputs, num_beams=4, max_length=1024,
-# early_stopping=True)
-#     summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    text=f"{answers[0]}"
 
-#     return summary
+    for i in range(1,3):
+        text=f"{text}. {answers[i]}"
 
-query='what are the operations of a stack'
+    data_row={
+        'question': query,
+        'context': text
+    }
 
-text=get_answer(query=query,k=6)[0]
+    generator = pipeline("text-generation",max_new_tokens=100, model="gpt2")
 
-from sentence_transformers import CrossEncoder
 
-model = CrossEncoder("jinaai/jina-reranker-v1-turbo-en", trust_remote_code=True)
+    response = generator(text,num_return_sequences=1)
+    # print(text)
+    # print('---------------------------')
+    # print(response[0]['generated_text'])
+    return response[0]['generated_text']
 
-results = model.rank(query, text, return_documents=True, top_k=3)
 
-print(results)
+print(get_final_answers("what is a queue"))

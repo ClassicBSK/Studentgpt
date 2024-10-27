@@ -60,7 +60,7 @@ def get_set(query:str,k:int):
             #print(i)
             tempsite.extend(get_scores(query=i,k=k))
     tempsite=list(set(tempsite))
-    print(tempsite)
+    # print(tempsite)
     return tempsite
 
 def get_final_sentences(query:str,k:int):
