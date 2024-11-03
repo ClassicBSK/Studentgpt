@@ -64,7 +64,7 @@ Indirect Applications
 <START>
 Implementation
 
-There are many ways (similar to Stacks) of implementing queue operations and some of the
+There are many ways of implementing queue operations and some of the
 commonly used methods are listed below.
       •     Simple circular array based implementation
       •     Dynamic circular array based implementation

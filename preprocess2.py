@@ -10,7 +10,7 @@ import pickle
 # nltk.download('stopwords')
 
 
-file=open("Text\queue.txt",mode="r",encoding="utf-8")
+file=open("Text\\queue.txt",mode="r",encoding="utf-8")
 
 #splitting based on tokens
 text1=file.read()
@@ -19,7 +19,7 @@ text=[i.lower() for i in text]
 text=text[1:]
 finaldata=[]
 
-file=open("Text\stack.txt",mode="r",encoding="utf-8")
+file=open("Text\\stack.txt",mode="r",encoding="utf-8")
 
 #splitting based on tokens
 text1=file.read()
@@ -27,13 +27,50 @@ text2=text1.split('<START>')
 text2=[i.lower() for i in text2]
 text2=text2[1:]
 
+
 #removing new lines
 for i in text:
-    i=i.replace('\n',' ')
+    # i=i.replace('\n',' ')
     finaldata.append(i)
 
 for i in text2:
-    i=i.replace('\n',' ')
+    # i=i.replace('\n',' ')
+    finaldata.append(i)
+#checked tokens
+
+file=open("Text\\linkedlist.txt",mode="r",encoding="utf-8")
+
+#splitting based on tokens
+text1=file.read()
+text2=text1.split('<START>')
+text2=[i.lower() for i in text2]
+text2=text2[1:]
+
+for i in text2:
+    # i=i.replace('\n',' ')
+    finaldata.append(i)
+#checked tokens
+file=open("Text\\tree.txt",mode="r",encoding="utf-8")
+
+#splitting based on tokens
+text1=file.read()
+text2=text1.split('<START>')
+text2=[i.lower() for i in text2]
+text2=text2[1:]
+
+for i in text2:
+    # i=i.replace('\n',' ')
+    finaldata.append(i)
+
+file=open("Text\\graph.txt",mode="r",encoding="utf-8")
+
+#splitting based on tokens
+text1=file.read()
+text2=text1.split('<START>')
+text2=[i.lower() for i in text2]
+text2=text2[1:]
+for i in text2:
+    # i=i.replace('\n',' ')
     finaldata.append(i)
 #checked tokens
 

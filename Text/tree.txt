@@ -1,0 +1,328 @@
+<START>
+What is a Tree?
+
+A tree is a data structure similar to a linked list but instead of each node pointing simply to the
+next node in a linear fashion, each node points to a number of nodes. Tree is an example of a non-
+linear data structure. A tree structure is a way of representing the hierarchical nature of a structure
+in a graphical form.
+
+In trees ADT (Abstract Data Type), the order of the elements is not important. If we need ordering
+information, linear data structures like linked lists, stacks, queues, etc. can be used.
+
+•   The root of a tree is the node with no parents. There can be at most one root node in
+     a tree (node A in the above example).
+•   An edge refers to the link from parent to child (all links in the figure).
+•   A node with no children is called leaf node (E,J,K,H and I).
+•   Children of same parent are called siblings (B,C,D are siblings of A, and E,F are the
+     siblings of B).
+•   A node p is an ancestor of node q if there exists a path from root to q and p appears
+     on the path. The node q is called a descendant of p. For example, A,C and G are the
+     ancestors of if.
+•   The set of all nodes at a given depth is called the level of the tree (B, C and D are
+     the same level). The root node is at level zero.
+•   The depth of a node is the length of the path from the root to the node (depth of G is
+     2, A – C – G).
+•   The height of a node is the length of the path from that node to the deepest node. The
+     height of a tree is the length of the path from the root to the deepest node in the tree.
+     A (rooted) tree with only one node (the root) has a height of zero. In the previous
+     example, the height of B is 2 (B – F – J).
+•   Height of the tree is the maximum height among all the nodes in the tree and depth of
+     the tree is the maximum depth among all the nodes in the tree. For a given tree,
+     depth and height returns the same value. But for individual nodes we may get
+     different results.
+•   The size of a node is the number of descendants it has including itself (the size of the
+     subtree C is 3).
+•   If every node in a tree has only one child (except leaf nodes) then we call such trees
+     skew trees. If every node has only left child then we call them left skew trees.
+     Similarly, if every node has only right child then we call them right skew trees.
+<START>
+what is a Binary Tree?
+
+A tree is called binary tree if each node has zero child, one child or two children. Empty tree is
+also a valid binary tree. We can visualize a binary tree as consisting of a root and two disjoint
+binary trees, called the left and right subtrees of the root.
+<START>
+Types of Binary Trees
+
+Strict Binary Tree: A binary tree is called strict binary tree if each node has exactly two
+children or no children.
+
+Full Binary Tree: A binary tree is called full binary tree if each node has exactly two children
+and all leaf nodes are at the same level.
+
+Complete Binary Tree: Before defining the complete binary tree, let us assume that the height of
+the binary tree is h. In complete binary trees, if we give numbering for the nodes by starting at the
+root (let us say the root node has 1) then we get a complete sequence from 1 to the number of
+nodes in the tree. While traversing we should give numbering for NULL pointers also. A binary
+tree is called complete binary tree if all leaf nodes are at height h or h – 1 and also without any
+missing number in the sequence.
+<START>
+Properties of Binary Trees
+
+For the following properties, let us assume that the height of the tree is h. Also, assume that root
+node is at height zero.
+From the diagram we can infer the following properties:
+      •     The number of nodes n in a full binary tree is 2h+1 – 1. Since, there are h levels we
+             need to add all nodes at each level [20 + 21+ 22 + ··· + 2h = 2h+1 – 1].
+      •     The number of nodes n in a complete binary tree is between 2h (minimum) and 2h+1
+             – 1 (maximum). For more information on this, refer to Priority Queues chapter.
+      •     The number of leaf nodes in a full binary tree is 2h.
+      •     The number of NULL links (wasted pointers) in a complete binary tree of n nodes is
+             n + 1.
+<START>
+Structure of Binary Trees
+Now let us define structure of the binary tree. For simplicity, assume that the data of the nodes are
+integers. One way to represent a node (which contains data) is to have two links which point to
+left and right children along with data fields as shown below:
+Note: In trees, the default flow is from parent to children and it is not mandatory to show directed
+branches. For our discussion, we assume both the representations shown below are the same.
+<START>
+Operations on Binary Trees
+Basic Operations
+       •     Inserting an element into a tree
+       •     Deleting an element from a tree
+       •     Searching for an element
+       •     Traversing the tree
+Auxiliary Operations
+       •     Finding the size of the tree
+       •     Finding the height of the tree
+       •     Finding the level which has maximum sum
+       •     Finding the least common ancestor (LCA) for a given pair of nodes, and many more.
+<START>
+Applications of Binary Trees
+Following are the some of the applications where binary trees play an important role:
+       •     Expression trees are used in compilers.
+       •     Huffman coding trees that are used in data compression algorithms.
+       •     Binary Search Tree (BST), which supports search, insertion and deletion on a
+              collection of items in O(logn) (average).
+       •     Priority Queue (PQ), which supports search and deletion of minimum (or maximum)
+              on a collection of items in logarithmic time (in worst case).
+<START>
+There are 3 possible ways to traverse a tree. They are:
+	 •     Preorder (DLR) Traversal
+       •     Inorder (LDR) Traversal
+       •     Postorder (LRD) Traversal
+
+PreOrder Traversal
+
+In preorder traversal, each node is processed before (pre) either of its subtrees. This is the
+simplest traversal to understand. However, even though each node is processed before the
+subtrees, it still requires that some information must be maintained while moving down the tree.
+In the example above, 1 is processed first, then the left subtree, and this is followed by the right
+subtree.
+
+Therefore, processing must return to the right subtree after finishing the processing of the left
+subtree. To move to the right subtree after processing the left subtree, we must maintain the root
+information. The obvious ADT for such information is a stack. Because of its LIFO structure, it is
+possible to get the information about the right subtrees back in the reverse order.
+
+Preorder traversal is defined as follows:
+      •      Visit the root.
+      •      Traverse the left subtree in Preorder.
+      •      Traverse the right subtree in Preorder.
+
+The nodes of tree would be visited in the order: 1 2 4 5 3 6 7
+
+
+
+
+Time Complexity: O(n). Space Complexity: O(n).
+
+
+Non-Recursive Preorder Traversal
+
+In the recursive version, a stack is required as we need to remember the current node so that after
+completing the left subtree we can go to the right subtree. To simulate the same, first we process
+the current node and before going to the left subtree, we store the current node on stack. After
+completing the left subtree processing, pop the element and go to its right subtree. Continue this
+process until stack is nonempty.
+Time Complexity: O(n). Space Complexity: O(n).
+
+
+InOrder Traversal
+
+In Inorder Traversal the root is visited between the subtrees. Inorder traversal is defined as
+follows:
+      •      Traverse the left subtree in Inorder.
+      •      Visit the root.
+      •      Traverse the right subtree in Inorder.
+
+The nodes of tree would be visited in the order: 4 2 5 1 6 3 7
+Time Complexity: O(n). Space Complexity: O(n).
+
+
+Non-Recursive Inorder Traversal
+
+The Non-recursive version of Inorder traversal is similar to Preorder. The only change is, instead
+of processing the node before going to left subtree, process it after popping (which is indicated
+after completion of left subtree processing).
+
+
+
+
+Time Complexity: O(n). Space Complexity: O(n).
+PostOrder Traversal
+
+In postorder traversal, the root is visited after both subtrees. Postorder traversal is defined as
+follows:
+       •      Traverse the left subtree in Postorder.
+       •      Traverse the right subtree in Postorder.
+       •      Visit the root.
+
+The nodes of the tree would be visited in the order: 4 5 2 6 7 3 1
+
+
+
+
+Time Complexity: O(n). Space Complexity: O(n).
+
+
+Non-Recursive Postorder Traversal
+
+In preorder and inorder traversals, after popping the stack element we do not need to visit the
+same vertex again. But in postorder traversal, each node is visited twice. That means, after
+processing the left subtree we will visit the current node and after processing the right subtree we
+will visit the same current node. But we should be processing the node during the second visit.
+Here the problem is how to differentiate whether we are returning from the left subtree or the
+right subtree.
+
+We use a previous variable to keep track of the earlier traversed node. Let’s assume current is the
+current node that is on top of the stack. When previous is current’s parent, we are traversing
+down the tree. In this case, we try to traverse to current’s left child if available (i.e., push left
+child to the stack). If it is not available, we look at current’s right child. If both left and right child
+do not exist (ie, current is a leaf node), we print current’s value and pop it off the stack.
+
+If prev is current’s left child, we are traversing up the tree from the left. We look at current’s right
+child. If it is available, then traverse down the right child (i.e., push right child to the stack);
+otherwise print current’s value and pop it off the stack. If previous is current’s right child, we are
+traversing up the tree from the right. In this case, we print current’s value and pop it off the stack.
+Time Complexity: O(n). Space Complexity: O(n).
+
+Level Order Traversal
+
+Level order traversal is defined as follows:
+       •     Visit the root.
+       •     While traversing level (, keep all the elements at level ( + 1 in queue.
+       •     Go to the next level and visit all the nodes at that level.
+       •     Repeat this until all levels are completed.
+
+The nodes of the tree are visited in the order: 1 2 3 4 5 6 7
+Time Complexity: O(n). Space Complexity: O(n). Since, in the worst case, all the nodes on the
+entire last level could be in the queue simultaneously.
+
+<START>
+Expression Trees
+
+A tree representing an expression is called an expression tree. In expression trees, leaf nodes are
+operands and non-leaf nodes are operators. That means, an expression tree is a binary tree where
+internal nodes are operators and leaves are operands. An expression tree consists of binary
+expression. But for a u-nary operator, one subtree will be empty. The figure below shows a
+simple expression tree for (A + B * C) / D.
+Algorithm for Building Expression Tree from Postfix Expression
+Example: Assume that one symbol is read at a time. If the symbol is an operand, we create a tree
+node and push a pointer to it onto a stack. If the symbol is an operator, pop pointers to two trees
+T1 and T2 from the stack (T1 is popped first) and form a new tree whose root is the operator and
+whose left and right children point to T2 and T1 respectively. A pointer to this new tree is then
+pushed onto the stack.
+As an example, assume the input is A B C * + D /. The first three symbols are operands, so create
+tree nodes and push pointers to them onto a stack as shown below.
+
+
+
+
+Next, an operator ‘*’ is read, so two pointers to trees are popped, a new tree is formed and a
+pointer to it is pushed onto the stack.
+
+
+
+
+Next, an operator ‘+’ is read, so two pointers to trees are popped, a new tree is formed and a
+pointer to it is pushed onto the stack.
+
+
+
+
+Next, an operand ‘D’ is read, a one-node tree is created and a pointer to the corresponding tree is
+pushed onto the stack.
+Finally, the last symbol (‘/’) is read, two trees are merged and a pointer to the final tree is left on
+the stack.
+
+<START>
+What is a Binary Search Tree(BST)
+
+In binary search trees, all the left subtree elements should be less than root data and all the right
+subtree elements should be greater than root data. This is called binary search tree property. Note
+that, this property should be satisfied at every node in the tree.
+       •     The left subtree of a node contains only nodes with keys less than the nodes key.
+       •     The right subtree of a node contains only nodes with keys greater than the nodes key.
+       •     Both the left and right subtrees must also be binary search trees.
+
+
+<START>
+Operations on Binary Search Trees
+
+Main operations: Following are the main operations that are supported by binary search trees:
+      •      Find/ Find Minimum / Find Maximum element in binary search trees
+      •      Inserting an element in binary search trees
+      •      Deleting an element from binary search trees
+
+Auxiliary operations: Checking whether the given tree is a binary search tree or not
+      •      Finding kth-smallest element in tree
+<START>
+Finding an Element in Binary Search Trees
+
+Find operation is straightforward in a BST. Start with the root and keep moving left or right using
+the BST property. If the data we are searching is same as nodes data then we return current node.
+
+If the data we are searching is less than nodes data then search left subtree of current node;
+otherwise search right subtree of current node. If the data is not present, we end up in a NULL
+link.
+
+
+
+
+Time Complexity: O(n), in worst case (when BST is a skew tree). Space Complexity: O(n), for
+recursive stack.
+
+Non recursive version of the above algorithm can be given as:
+
+
+
+
+Time Complexity: O(n). Space Complexity: O(1).
+<START>
+Finding Minimum Element in Binary Search Trees
+
+In BSTs, the minimum element is the left-most node, which does not has left child. In the BST
+below, the minimum element is 4.
+Time Complexity: O(n), in worst case (when BST is a left skew tree).
+Space Complexity: O(n), for recursive stack.
+
+
+
+
+Non recursive version of the above algorithm can be given as:
+
+
+
+
+Time Complexity: O(n). Space Complexity: O(1).
+<START>
+Finding Maximum Element in Binary Search Trees
+
+In BSTs, the maximum element is the right-most node, which does not have right child. In the BST
+below, the maximum element is 16.
+
+
+
+
+Time Complexity: O(n), in worst case (when BST is a right skew tree).
+Space Complexity: O(n), for recursive stack.
+
+
+
+
+Non recursive version of the above algorithm can be given as:
+Time Complexity: O(n). Space Complexity: O(1).
+
+<START>

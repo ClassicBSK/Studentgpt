@@ -25,7 +25,7 @@ def get_reranked_texts(query,k):
 
     from sentence_transformers import CrossEncoder
 
-    model = CrossEncoder("jinaai/jina-reranker-v1-turbo-en", trust_remote_code=True)
+    model = CrossEncoder("models\models--jinaai--jina-reranker-v1-turbo-en\\reranker", trust_remote_code=True)
 
     results = model.rank(query, text, return_documents=True, top_k=k)
 

@@ -5,7 +5,7 @@ from preprocess2 import get_final_data
 finaldata=get_final_data()
 # print(final_data)
 
-model=SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+model=SentenceTransformer('models\models--sentence-transformers--all-MiniLM-L6-v2\embed')
 
 
 

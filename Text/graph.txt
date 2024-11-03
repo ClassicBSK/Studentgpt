@@ -1,0 +1,278 @@
+<START>
+What is a graph?
+A graph is a pair (V, E), where V is a set of nodes, called vertices, and £ is a collection
+of pairs of vertices, called edges.
+      •     Vertices and edges are positions and store elements
+•   Definitions that we use:
+            ○     Directed edge:
+                         ▪ ordered pair of vertices (u, v)
+                         ▪ first vertex u is the origin
+                         ▪ second vertex v is the destination
+                         ▪ Example: one-way road traffic
+
+
+
+
+           ○     Undirected edge:
+                        ▪ unordered pair of vertices (u, v)
+                        ▪ Example: railway lines
+
+
+
+
+           ○     Directed graph:
+                        ▪ all the edges are directed
+                        ▪ Example: route network
+
+
+
+
+           ○ Undirected graph:
+                       ▪ all the edges are undirected
+                       ▪ Example: flight network
+•   When an edge connects two vertices, the vertices are said to be adjacent to each
+    other and the edge is incident on both vertices.
+•   A graph with no cycles is called a tree. A tree is an acyclic connected graph.
+<START>
+A directed acyclic graph [DAG] is a directed graph with no cycles.
+•   A forest is a disjoint set of trees.
+•   A spanning tree of a connected graph is a subgraph that contains all of that graph’s
+    vertices and is a single tree. A spanning forest of a graph is the union of spanning
+    trees of its connected components.
+•   A bipartite graph is a graph whose vertices can be divided into two sets such that all
+    edges connect a vertex in one set with a vertex in the other set.
+<START>
+what is a weighted graph?
+In weighted graphs integers (weights) are assigned to each edge to represent
+     (distances or costs).
+     •    Graphs with all edges present are called complete graphs.
+
+
+
+
+     •    Graphs with relatively few edges (generally if it edges < |V| log |V|) are called
+          sparse graphs.
+     •    Graphs with relatively few of the possible edges missing are called dense.
+     •    Directed weighted graphs are sometimes called network.
+     •    We will denote the number of vertices in a given graph by |V|, and the number of
+          edges by |E|. Note that E can range anywhere from 0 to |V|(|V| – l)/2 (in undirected
+          graph). This is because each node can connect to every other node.
+<START>
+Applications of Graphs
+       •     Representing relationships between components in electronic circuits
+       •     Transportation networks: Highway network, Flight network
+       •     Computer networks: Local area network, Internet, Web
+       •     Databases: For representing ER (Entity Relationship) diagrams in databases, for
+              representing dependency of tables in databases
+<START>
+Graph Representation
+
+As in other ADTs, to manipulate graphs we need to represent them in some useful form. Basically,
+there are three ways of doing this:
+       •     Adjacency Matrix
+       •     Adjacency List
+<START>
+Graph Declaration for Adjacency Matrix
+
+First, let us look at the components of the graph data structure. To represent graphs, we need the
+number of vertices, the number of edges and also their interconnections. So, the graph can be
+declared as:
+Description
+
+In this method, we use a matrix with size V × V. The values of matrix are boolean. Let us assume
+the matrix is Adj. The value Adj[u, v] is set to 1 if there is an edge from vertex u to vertex v and 0
+otherwise.
+
+In the matrix, each edge is represented by two bits for undirected graphs. That means, an edge
+from u to v is represented by 1 value in both Adj[u,v ] and Adj[u,v]. To save time, we can process
+only half of this symmetric matrix. Also, we can assume that there is an “edge” from each vertex
+to itself. So, Adj[u, u] is set to 1 for all vertices.
+If the graph is a directed graph then we need to mark only one entry in the adjacency matrix. As an
+example, consider the directed graph below.
+
+The adjacency matrix for this graph can be given as:
+
+Now, let us concentrate on the implementation. To read a graph, one way is to first read the vertex
+names and then read pairs of vertex names (edges). The code below reads an undirected graph.
+The adjacency matrix representation is good if the graphs are dense. The matrix requires O(V2)
+bits of storage and O(V2) time for initialization. If the number of edges is proportional to V2, then
+there is no problem because V2 steps are required to read the edges. If the graph is sparse, the
+initialization of the matrix dominates the running time of the algorithm as it takes takes O(V2).
+<START>
+Graph Declaration for Adjacency List
+
+In this representation all the vertices connected to a vertex v are listed on an adjacency list for
+that vertex v. This can be easily implemented with linked lists. That means, for each vertex v we
+use a linked list and list nodes represents the connections between v and other vertices to which v
+has an edge.
+The total number of linked lists is equal to the number of vertices in the graph. The graph ADT
+can be declared as:
+
+Description
+
+Considering the same example as that of the adjacency matrix, the adjacency list representation
+can be given as:
+Since vertex A has an edge for B and D, we have added them in the adjacency list for A. The
+same is the case with other vertices as well.
+For this representation, the order of edges in the input is important. This is because they
+determine the order of the vertices on the adjacency lists. The same graph can be represented in
+many different ways in an adjacency list. The order in which edges appear on the adjacency list
+affects the order in which edges are processed by algorithms.
+
+Disadvantages of Adjacency Lists
+
+Using adjacency list representation we cannot perform some operations efficiently. As an
+example, consider the case of deleting a node. . In adjacency list representation, it is not enugh if
+we simply delete a node from the list representation, if we delete a node from the adjacency list
+then that is enough. For each node on the adjacency list of that node specifies another vertex. We
+need to search other nodes linked list also for deleting it. This problem can be solved by linking
+the two list nodes that correspond to a particular edge and making the adjacency lists doubly
+linked. But all these extra links are risky to process.
+<START>
+Graph Traversal
+To solve problems on graphs, we need a mechanism for traversing the graphs. Graph traversal
+algorithms are also called graph search algorithms. Like trees traversal algorithms (Inorder,
+Preorder, Postorder and Level-Order traversals), graph search algorithms can be thought of as
+starting at some source vertex in a graph and “searching” the graph by going through the edges and
+marking the vertices. Now, we will discuss two such algorithms for traversing the graphs.
+       •     Depth First Search [DFS]
+       •     Breadth First Search [BFS]
+<START>
+Depth First Search [DFS]
+
+DFS algorithm works in a manner similar to preorder traversal of the trees. Like preorder
+traversal, internally this algorithm also uses stack.
+
+Let us consider the following example. Suppose a person is trapped inside a maze. To come out
+from that maze, the person visits each path and each intersection (in the worst case). Let us say the
+person uses two colors of paint to mark the intersections already passed. When discovering a new
+intersection, it is marked grey, and he continues to go deeper.
+
+After reaching a “dead end” the person knows that there is no more unexplored path from the grey
+intersection, which now is completed, and he marks it with black. This “dead end” is either an
+intersection which has already been marked grey or black, or simply a path that does not lead to
+an intersection.
+
+The intersections of the maze are the vertices and the paths between the intersections are the
+edges of the graph. The process of returning from the “dead end” is called backtracking. We are
+trying to go away from the starting vertex into the graph as deep as possible, until we have to
+backtrack to the preceding grey vertex. In DFS algorithm, we encounter the following types of
+edges.
+
+      Tree edge: encounter new vertex
+      Back edge: from descendent to ancestor
+      Forward edge: from ancestor to descendent
+      Cross edge: between a tree or subtrees
+
+For most algorithms boolean classification, unvisited/visited is enough (for three color
+implementation refer to problems section). That means, for some problems we need to use three
+colors, but for our discussion two colors are enough.
+Initially all vertices are marked unvisited (false). The DFS algorithm starts at a vertex u in the
+graph. By starting at vertex u it considers the edges from u to other vertices. If the edge leads to
+an already visited vertex, then backtrack to current vertex u. If an edge leads to an unvisited
+vertex, then go to that vertex and start processing from that vertex. That means the new vertex
+becomes the current vertex. Follow this process until we reach the dead-end. At this point start
+backtracking.
+
+The process terminates when backtracking leads back to the start vertex. The algorithm based on
+this mechanism is given below: assume Visited[] is a global array.
+<START>
+Applications of DFS
+       •     Topological sorting
+       •     Finding connected components
+       •     Finding articulation points (cut vertices) of the graph
+       •     Finding strongly connected components
+       •     Solving puzzles such as mazes
+<START>
+
+Breadth First Search [BFS]
+
+The BFS algorithm works similar to level – order traversal of the trees. Like level – order
+traversal, BFS also uses queues. In fact, level – order traversal got inspired from BFS. BFS
+works level by level. Initially, BFS starts at a given vertex, which is at level 0. In the first stage it
+visits all vertices at level 1 (that means, vertices whose distance is 1 from the start vertex of the
+graph). In the second stage, it visits all vertices at the second level. These new vertices are the
+ones which are adjacent to level 1 vertices.
+
+BFS continues this process until all the levels of the graph are completed. Generally queue data
+structure is used for storing the vertices of a level.
+
+As similar to DFS, assume that initially all vertices are marked unvisited (false). Vertices that
+have been processed and removed from the queue are marked visited (true). We use a queue to
+represent the visited set as it will keep the vertices in the order of when they were first visited.
+
+Time complexity of BFS is O(V + E), if we use adjacency lists for representing the graphs, and
+O(V2) for adjacency matrix representation.
+<START>
+Applications of BFS
+      •     Finding all connected components in a graph
+      •     Finding all nodes within one connected component
+      •     Finding the shortest path between two nodes
+      •     Testing a graph for bipartiteness
+<START>
+Comparing DFS and BFS
+
+Comparing BFS and DFS, the big advantage of DFS is that it has much lower memory
+requirements than BFS because it’s not required to store all of the child pointers at each level.
+Depending on the data and what we are looking for, either DFS or BFS can be advantageous. For
+example, in a family tree if we are looking for someone who’s still alive and if we assume that
+person would be at the bottom of the tree, then DFS is a better choice. BFS would take a very
+long time to reach that last level.
+
+The DFS algorithm finds the goal faster. Now, if we were looking for a family member who died
+a very long time ago, then that person would be closer to the top of the tree. In this case, BFS
+finds faster than DFS. So, the advantages of either vary depending on the data and what we are
+looking for.
+
+DFS is related to preorder traversal of a tree. Like preorder traversal, DFS visits each node
+before its children. The BFS algorithm works similar to level – order traversal of the trees.
+
+If someone asks whether DFS is better or BFS is better, the answer depends on the type of the
+problem that we are trying to solve. BFS visits each level one at a time, and if we know the
+solution we are searching for is at a low depth, then BFS is good. DFS is a better choice if the
+solution is at maximum depth. The below table shows the differences between DFS and BFS in
+terms of their applications.
+<START>
+Minimal Spanning Tree
+
+The Spanning tree of a graph is a subgraph that contains all the vertices and is also a tree. A
+graph may have many spanning trees. As an example, consider a graph with 4 vertices as shown
+below. Let us assume that the corners of the graph are vertices.
+A minimum spanning tree of
+an undirected graph G is a tree formed from graph edges that connect all the vertices of G with
+minimum total cost (weights). A minimum spanning tree exists only if the graph is connected.
+There are two famous algorithms for this problem:
+      •     Prim’s Algorithm
+      •     Kruskal’s Algorithm
+<START>
+Prim’s Algorithm for finding minimal spanning tree
+
+Prim’s algorithm is almost the same as Dijkstra’s algorithm. As in Dijkstra’s algorithm, in Prim’s
+algorithm we keep the values distance and paths in the distance table. The only exception is that
+since the definition of distance is different, the updating statement also changes a little. The
+update statement is simpler than before.
+The entire implementation of this algorithm is identical to that of Dijkstra’s algorithm. The
+running time is O(|V|2) without heaps [good for dense graphs], and O (ElogV) using binary heaps
+[good for sparse graphs].
+<START>
+Kruskal’s Algorithm for finding minimal spanning tree
+
+The algorithm starts with V different trees (V is the vertices in the graph). While constructing the
+minimum spanning tree, every time Kruskal’s alorithm selects an edge that has minimum weight
+and then adds that edge if it doesn’t create a cycle. So, initially, there are | V | single-node trees in
+the forest. Adding an edge merges two trees into one. When the algorithm is completed, there will
+be only one tree, and that is the minimum spanning tree. There are two ways of implementing
+Kruskal’s algorithm:
+       •     By using Disjoint Sets: Using UNION and FIND operations
+       •     By using Priority Queues: Maintains weights in priority queue
+<START>
+
+
+
+
+
+
+
+
+
+
