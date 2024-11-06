@@ -9,7 +9,8 @@ import pickle
 # nltk.download('punkt')
 # nltk.download('stopwords')
 
-
+j=0
+paratoken={}
 file=open("Text\\queue.txt",mode="r",encoding="utf-8")
 
 #splitting based on tokens
@@ -30,12 +31,19 @@ text2=text2[1:]
 
 #removing new lines
 for i in text:
+    
     # i=i.replace('\n',' ')
     finaldata.append(i)
+    paratoken[i]=j
+
+j+=1
 
 for i in text2:
     # i=i.replace('\n',' ')
     finaldata.append(i)
+    paratoken[i]=j
+
+j+=1
 #checked tokens
 
 file=open("Text\\linkedlist.txt",mode="r",encoding="utf-8")
@@ -49,6 +57,9 @@ text2=text2[1:]
 for i in text2:
     # i=i.replace('\n',' ')
     finaldata.append(i)
+    paratoken[i]=j
+
+j+=1
 #checked tokens
 file=open("Text\\tree.txt",mode="r",encoding="utf-8")
 
@@ -61,6 +72,9 @@ text2=text2[1:]
 for i in text2:
     # i=i.replace('\n',' ')
     finaldata.append(i)
+    paratoken[i]=j
+
+j+=1
 
 file=open("Text\\graph.txt",mode="r",encoding="utf-8")
 
@@ -72,6 +86,9 @@ text2=text2[1:]
 for i in text2:
     # i=i.replace('\n',' ')
     finaldata.append(i)
+    paratoken[i]=j
+
+j+=1
 #checked tokens
 
 stopwords = nltk.corpus.stopwords.words('english')
@@ -127,6 +144,9 @@ def get_embeddings(query:str):
 
 def get_final_data():
     return finaldata
+
+def get_paratoken():
+    return paratoken
 # embeddings=get_embeddings("what is a queue")
 
 

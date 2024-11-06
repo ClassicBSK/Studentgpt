@@ -324,5 +324,3 @@ Space Complexity: O(n), for recursive stack.
 
 Non recursive version of the above algorithm can be given as:
 Time Complexity: O(n). Space Complexity: O(1).
-
-<START>

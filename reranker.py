@@ -1,5 +1,6 @@
 # from transformers import BartForConditionalGeneration, BartTokenizer
 from retrieval3 import get_answer
+from sentence_transformers import CrossEncoder
 # # model_name = 'facebook/bart-large-cnn'
 # model = BartForConditionalGeneration.from_pretrained('Yale-LILY/brio-cnndm-uncased')
 # tokenizer = BartTokenizer.from_pretrained('Yale-LILY/brio-cnndm-uncased')
@@ -23,9 +24,9 @@ query='what are the operations of a stack'
 def get_reranked_texts(query,k):
     text=get_answer(query=query,k=6)[0]
 
-    from sentence_transformers import CrossEncoder
+    
 
-    model = CrossEncoder("models\models--jinaai--jina-reranker-v1-turbo-en\\reranker", trust_remote_code=True)
+    model = CrossEncoder("models\\models--jinaai--jina-reranker-v1-turbo-en\\reranker", trust_remote_code=True)
 
     results = model.rank(query, text, return_documents=True, top_k=k)
 

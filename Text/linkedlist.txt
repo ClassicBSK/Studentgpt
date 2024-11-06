@@ -408,6 +408,4 @@ of the first node.
     shown below).
 Time Complexity: O(n), for scanning the complete list of size n.
 Space Complexity: O(1), for a temporary variable.
-<START>
-
 

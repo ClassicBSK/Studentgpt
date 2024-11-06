@@ -264,8 +264,7 @@ the forest. Adding an edge merges two trees into one. When the algorithm is comp
 be only one tree, and that is the minimum spanning tree. There are two ways of implementing
 Kruskal’s algorithm:
        •     By using Disjoint Sets: Using UNION and FIND operations
-       •     By using Priority Queues: Maintains weights in priority queue
-<START>
+       •     By using Priority Queues: Maintains weights in priority queue.
 
 
 
