@@ -1,7 +1,7 @@
 import telebot
 from summarize import get_final_answers
 
-bot=telebot.TeleBot('7460104082:AAG1Sj0cPUBOCGp2hkHT1wW08AmplnWHinU')
+bot=telebot.TeleBot('token')
 
 @bot.message_handler(commands=['start'])
 def start(message):
